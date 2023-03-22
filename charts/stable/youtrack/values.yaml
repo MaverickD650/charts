@@ -10,37 +10,43 @@ podSecurityContext:
   runAsGroup: 13001
   runAsUser: 13001
 
-youtrack:
-  baseURL: http://localhost:18080
-  webHooksBaseUrl: ""
-  hubURL: ""
-  defaultPage: /dashboard
-  support_email: youtrack-feedback@jetbrains.com
-  authThrottlingEnabled: false
-  disableCheckForUpdate: false
-  minPrefixQueryLength: 3
-  mailLimit: 0
-  eventMergeTimeout: 60000
-  requestHeaderBufferSize: 102400
-  licenseName: ""
-  licenseKey: ""
-  statisticsUpload: false
-  dumbMode: false
-  admin_restore: false
-  jvm:
-    maxHeapSize: 1g
-    maxMetaspaceMemory: 350m
-    metaspaceMemory: 350m
-    extraJVMOptions:
-      []
-      # - -XX:+HeapDumpOnOutOfMemoryError
-
 service:
   main:
     ports:
       main:
         port: 18080
         protocol: HTTP
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            baseURL: http://localhost:18080
+            webHooksBaseUrl: ""
+            hubURL: ""
+            defaultPage: /dashboard
+            support_email: youtrack-feedback@jetbrains.com
+            authThrottlingEnabled: false
+            disableCheckForUpdate: false
+            minPrefixQueryLength: 3
+            mailLimit: 0
+            eventMergeTimeout: 60000
+            requestHeaderBufferSize: 102400
+            licenseName: ""
+            licenseKey: ""
+            statisticsUpload: false
+            dumbMode: false
+            admin_restore: false
+            jvm:
+              maxHeapSize: 1g
+              maxMetaspaceMemory: 350m
+              metaspaceMemory: 350m
+              extraJVMOptions:
+                []
+                # - -XX:+HeapDumpOnOutOfMemoryError
+
 
 persistence:
   data:
