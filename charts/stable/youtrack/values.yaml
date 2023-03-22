@@ -47,7 +47,6 @@ workload:
                 []
                 # - -XX:+HeapDumpOnOutOfMemoryError
 
-
 persistence:
   data:
     enabled: true
