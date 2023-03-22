@@ -51,4 +51,4 @@ cnpg:
     database: lldap
 
 portal:
-    enabled: true
+  enabled: true
