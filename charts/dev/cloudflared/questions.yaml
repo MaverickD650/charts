@@ -10,7 +10,6 @@ questions:
 # Include{containerMain}
 # Include{containerBasic}
 # Include{containerAdvanced}
-
   - variable: cloudflared
     group: App Configuration
     label: Cloudflared Configuration
