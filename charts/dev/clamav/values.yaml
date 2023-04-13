@@ -46,6 +46,7 @@ workload:
     podSpec:
       containers:
         main:
+          primary: true
           probes:
             liveness:
               enabled: true
