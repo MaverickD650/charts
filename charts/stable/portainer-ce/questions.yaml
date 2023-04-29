@@ -10,56 +10,54 @@ questions:
 # Include{replicas1}
 # Include{podSpec}
 # Include{containerMain}
-
-
-  - variable: imageSelector
-    group: Container Image
-    label: Select Edition
-    schema:
-      type: string
-      default: image
-      enum:
-        - value: image
-          description: Community
-        - value: imageBe
-          description: Business
-  - variable: portainer
-    group: App Configuration
-    label: Portainer Configuration
-    schema:
-      additional_attrs: true
-      type: dict
-      attrs:
-        - variable: logo
-          label: Logo URL
-          description: Specifies the URL to the image to be displayed as a logo in the UI. If not specified, the Portainer logo is used instead.
-          schema:
-            type: string
-            default: ""
-        - variable: edge_compute
-          label: Edge Compute
-          description: Automatically enables Edge Compute features.
-          schema:
-            type: boolean
-            default: false
-        - variable: snapshot_interval
-          label: Snapshot Interval
-          description: Specifies the time interval between two environment snapshot jobs expressed as a string. For example 30s, 5m, 1h… Supported by the time.ParseDuration method
-          schema:
-            type: string
-            default: 5m
-        - variable: hide_labels
-          label: Hide Labels
-          description: Hides containers with a specific label in the UI. Format "label=value"
-          schema:
-            type: list
-            default: []
-            items:
-              - variable: label
-                label: Label
-                schema:
-                  type: string
-                  default: ""
+                                - variable: imageSelector
+                                  group: Container Image
+                                  label: Select Edition
+                                  schema:
+                                    type: string
+                                    default: image
+                                    enum:
+                                    - value: image
+                                      description: Community
+                                    - value: imageBe
+                                      description: Business
+                                - variable: portainer
+                                  group: App Configuration
+                                  label: Portainer Configuration
+                                  schema:
+                                    additional_attrs: true
+                                    type: dict
+                                    attrs:
+                                    - variable: logo
+                                      label: Logo URL
+                                      description: Specifies the URL to the image to be displayed as a logo in the UI. If not specified, the Portainer logo is used instead.
+                                      schema:
+                                        type: string
+                                        default: ""
+                                    - variable: edge_compute
+                                      label: Edge Compute
+                                      description: Automatically enables Edge Compute features.
+                                      schema:
+                                        type: boolean
+                                        default: false
+                                    - variable: snapshot_interval
+                                      label: Snapshot Interval
+                                      description: Specifies the time interval between two environment snapshot jobs expressed as a string. For example 30s, 5m, 1h… Supported by the time.ParseDuration method
+                                      schema:
+                                        type: string
+                                        default: 5m
+                                    - variable: hide_labels
+                                      label: Hide Labels
+                                      description: Hides containers with a specific label in the UI. Format "label=value"
+                                      schema:
+                                        type: list
+                                        default: []
+                                        items:
+                                        - variable: label
+                                          label: Label
+                                          schema:
+                                          type: string
+                                          default: ""
 # Include{containerBasic}
 # Include{containerAdvanced}
 # Include{containerConfig}
