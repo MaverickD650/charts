@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/libremdb
   pullPolicy: IfNotPresent
-  tag: latest@sha256:440bddb539786f7f3b725fbb7491e1e8bf21ba783cfaecbf0a0fe6c6f4a034e7
+  tag: latest@sha256:58ba4cc34494d8db531357c26703edf93ee738a911c739dd6c97c1d0e4fd5594
 service:
   main:
     ports:
