@@ -118,7 +118,7 @@ workload:
           enabled: true
           imageSelector: ubuntuImage
           type: install
-          command: 
+          command:
             - /bin/sh
             - -c
             - |
