@@ -147,7 +147,6 @@ workload:
                 name: cnpg-main-urls
                 key: std
             PGPASSWORD: { { .Values.cnpg.main.creds.password } }
-
       containers:
         main:
           probes:
