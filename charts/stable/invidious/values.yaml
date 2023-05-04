@@ -116,7 +116,7 @@ workload:
       initContainers:
         dbseed:
           enabled: true
-          imageSelector: ubuntuImage
+          imageSelector: ubuntuImage #specify the correct image here
           type: install
           command:
             - /bin/sh
@@ -139,14 +139,11 @@ workload:
               cd docker
               ./init-invidious-db.sh
           env:
-            POSTGRES_DB: { { .Values.cnpg.main.database } }
-            POSTGRES_USER: { { .Values.cnpg.main.user } }
+            POSTGRES_DB: {{ .Values.cnpg.main.database }}
+            POSTGRES_USER: {{ .Values.cnpg.main.user }}
             PGPORT: "5432"
-            PGHOST:
-              secretKeyRef:
-                name: cnpg-main-urls
-                key: std
-            PGPASSWORD: { { .Values.cnpg.main.creds.password } }
+            PGHOST: "cnpg-main-urls" #set the value directly here
+            PGPASSWORD: {{ .Values.cnpg.main.creds.password }}
       containers:
         main:
           probes:
