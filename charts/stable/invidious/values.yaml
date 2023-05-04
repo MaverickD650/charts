@@ -118,15 +118,6 @@ workload:
           enabled: true
           imageSelector: ubuntuImage
           type: install
-          env:
-            POSTGRES_DB: { { .Values.cnpg.main.database } }
-            POSTGRES_USER: { { .Values.cnpg.main.user } }
-            PGPORT: "5432"
-            PGHOST:
-              secretKeyRef:
-                name: cnpg-main-urls
-                key: std
-            PGPASSWORD: { { .Values.cnpg.main.creds.password } }
           command: 
             - /bin/sh
             - -c
@@ -147,6 +138,16 @@ workload:
               echo "Performing the seed..."
               cd docker
               ./init-invidious-db.sh
+          env:
+            POSTGRES_DB: { { .Values.cnpg.main.database } }
+            POSTGRES_USER: { { .Values.cnpg.main.user } }
+            PGPORT: "5432"
+            PGHOST:
+              secretKeyRef:
+                name: cnpg-main-urls
+                key: std
+            PGPASSWORD: { { .Values.cnpg.main.creds.password } }
+
       containers:
         main:
           probes:
