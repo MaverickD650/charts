@@ -119,14 +119,14 @@ workload:
           imageSelector: ubuntuImage
           type: install
           env:
-            POSTGRES_DB: {{ .Values.cnpg.main.database }}
-            POSTGRES_USER: {{ .Values.cnpg.main.user }}
+            POSTGRES_DB: { { .Values.cnpg.main.database } }
+            POSTGRES_USER: { { .Values.cnpg.main.user } }
             PGPORT: "5432"
             PGHOST:
               secretKeyRef:
                 name: cnpg-main-urls
                 key: std
-            PGPASSWORD: {{ .Values.cnpg.main.creds.password }}
+            PGPASSWORD: { { .Values.cnpg.main.creds.password } }
           command: 
             - /bin/sh
             - -c
