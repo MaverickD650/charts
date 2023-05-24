@@ -4,7 +4,7 @@ dependencies:
   - name: common
     repository: https://library-charts.truecharts.org
     version: 12.9.5
-
+deprecated: false
 description: Mealie is a self hosted recipe manager and meal planner with a RestAPI backend
 home: https://truecharts.org/charts/stable/mealie
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/mealie.png
@@ -24,3 +24,4 @@ annotations:
   truecharts.org/catagories: |
     - utilities
   truecharts.org/SCALE-support: "true"
+  truecharts.org/grade: U
