@@ -1,20 +1,61 @@
 image:
-  repository: tccr.io/truecharts/mealie-frontend
-  tag: v1.0.0beta@sha256:4158c31d037c2ece8931d2e2b120654b6f658b020f9273e8a2cc289d9e715552
+  repository: hkotel/mealie:frontend-v1.0.0beta-5
+  tag: frontend-v1.0.0beta-5@sha256:4f80800d5cbc6702a82684cb1f1834b73e645cbf408e82e61b78e3513249d209
   pullPolicy: IfNotPresent
-
 apiImage:
-  repository: tccr.io/truecharts/mealie-api
-  tag: v1.0.0beta@sha256:1a3b047474f908ae97a78d0f679892aa0f1bbea1e97abaf57c115df1b33d398a
+  repository: hkotel/mealie:frontend-v1.0.0beta-5
+  tag: frontend-v1.0.0beta-5@sha256:4f80800d5cbc6702a82684cb1f1834b73e645cbf408e82e61b78e3513249d209
   pullPolicy: IfNotPresent
 
 securityContext:
-  readOnlyRootFilesystem: false
-  runAsNonRoot: false
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
 
-podSecurityContext:
-  runAsUser: 0
-  runAsGroup: 0
+service:
+  main:
+    ports:
+      main:
+        port: 10018
+        protocol: http
+        targetPort: 3000
+  api:
+    enabled: true
+    type: ClusterIP
+    ports:
+      api:
+        enabled: true
+        protocol: http
+        port: 10019
+
+workload:
+  main:
+    podSpec:
+      containers:
+        api:
+          probes:
+            liveness:
+              type: tcp
+            readiness:
+              type: tcp
+            starup:
+              type: tcp
+          envFrom:
+            - configmapRef:
+                name: "api-config"
+        main:
+          probes:
+            liveness:
+              type: tcp
+            readiness:
+              type: tcp
+            startup:
+              type: tcp
+          envFrom:
+            - configMapRef:
+                name: "frontend-config"
 
 mealie_frontend:
   theme:
@@ -65,47 +106,18 @@ mealie_backend:
     base_dn: ""
     admin_filter: ""
 
-envFrom:
-  - configMapRef:
-      name: '{{ include "tc.common.names.fullname" . }}-frontend-config'
-
-probes:
-  liveness:
-    type: HTTP
-    path: /
-  readiness:
-    type: HTTP
-    path: /
-  startup:
-    type: HTTP
-    path: /
-
-service:
-  main:
-    ports:
-      main:
-        port: 10018
-        protocol: HTTP
-        targetPort: 3000
-  api:
-    enabled: true
-    type: ClusterIP
-    ports:
-      api:
-        enabled: true
-        protocol: HTTP
-        port: 10019
-
 persistence:
   data:
     enabled: true
     mountPath: /app/data
+    targetSelectAll: true
 
-postgresql:
-  enabled: true
-  existingSecret: dbcreds
-  postgresqlUsername: mealie
-  postgresqlDatabase: mealie
+cnpg:
+  main:
+    enabled: true
+    user: mealie
+    database: mealie
 
 portal:
-  enabled: true
+  open:
+    enabled: true
