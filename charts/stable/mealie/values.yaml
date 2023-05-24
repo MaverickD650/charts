@@ -42,7 +42,6 @@ workload:
               type: tcp
             startup:
               type: tcp
-          env:
           envFrom:
             - configMapRef:
                 name: "frontend-config"
