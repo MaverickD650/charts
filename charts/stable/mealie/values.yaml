@@ -34,6 +34,17 @@ workload:
   main:
     podSpec:
       containers:
+        api:
+          probes:
+            liveness:
+              type: tcp
+            readiness:
+              type: tcp
+            starup:
+              type: tcp
+          envFrom:
+            - configmapRef:
+                name: "api-config"
         main:
           probes:
             liveness:
