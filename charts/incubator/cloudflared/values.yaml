@@ -33,14 +33,6 @@ service:
       main:
         enabled: false
 
-probes:
-  liveness:
-    enabled: false
-  readiness:
-    enabled: false
-  startup:
-    enabled: false
-
 portal:
   open:
     enabled: false
