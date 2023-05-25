@@ -21,8 +21,6 @@ workload:
               enabled: false
             startup:
               enabled: false
-          command:
-            - "/app/cloudflared"
           args:
             - tunnel
             - --no-autoupdate
