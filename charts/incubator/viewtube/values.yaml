@@ -30,6 +30,7 @@ workload:
                 expandObjectName: false
                 name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
                 key: plainhost
+            VIEWTUBE_DATABASE_USERNAME: "viewtube"
             VIEWTUBE_DATABASE_PASSWORD:
               secretKeyRef:
                 expandObjectName: false
