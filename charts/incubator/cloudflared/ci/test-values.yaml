@@ -1,3 +1,5 @@
 # With the bellow we test both container starts and that tpl is working inside extraArgs list
 args:
+  - tunnel
+  - run
   - --hello-world
