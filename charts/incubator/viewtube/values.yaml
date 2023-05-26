@@ -30,11 +30,6 @@ workload:
                 expandObjectName: false
                 name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
                 key: plainhost
-            VIEWTUBE_DATABASE_PASSWORD:
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
-                key: mongodb-password
             VIEWTUBE_REDIS_HOST:
               secretKeyRef:
                 expandObjectName: false
@@ -48,6 +43,7 @@ workload:
 
 mongodb:
   enabled: true
+  mongodbUsername: viewtube
   mongodbDatabase: viewtube
 
 redis:
