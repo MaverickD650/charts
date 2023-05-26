@@ -25,7 +25,16 @@ workload:
       containers:
         main:
           env:
-            VIEWTUBE_DATABASE_HOST: viewtube-mongodb
+            VIEWTUBE_DATABASE_HOST:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
+                key: plainhost
+            VIEWTUBE_DATABASE_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mongodbcreds" }}'
+                key: mongodb-password
             VIEWTUBE_REDIS_HOST:
               secretKeyRef:
                 expandObjectName: false
