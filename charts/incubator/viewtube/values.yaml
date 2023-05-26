@@ -24,13 +24,6 @@ workload:
     podSpec:
       containers:
         main:
-          probes:
-            liveness:
-              path: "/UI/Login"
-            readiness:
-              path: "/UI/Login"
-            startup:
-              path: "/UI/Login"
           env:
             VIEWTUBE_DATABASE_HOST: viewtube-mongodb
             VIEWTUBE_REDIS_HOST: viewtube-redis
