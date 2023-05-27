@@ -22,7 +22,7 @@ env:
   FR_DB_HOST:
     secretKeyRef:
       name: mariadbcreds
-      key: plainporthost
+      key: plainhost
   FR_DB_PASS:
     secretKeyRef:
       name: mariadbcreds
@@ -48,7 +48,6 @@ mariadb:
   enabled: true
   mariadbUsername: filerun
   mariadbDatabase: filerun
-  existingSecret: "mariadbcreds"
 
 portal:
   enabled: true
