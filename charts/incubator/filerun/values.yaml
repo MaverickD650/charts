@@ -7,8 +7,8 @@ securityContext:
   container:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
-    runAsUser: 1000
-    runAsGroup: 1000
+    runAsUser: 0
+    runAsGroup: 0
 
 env:
   APACHE_RUN_USER: apps
