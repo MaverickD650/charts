@@ -4,7 +4,11 @@ image:
   pullPolicy: IfNotPresent
 
 securityContext:
-  readOnlyRootFilesystem: false
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
 
 env:
   APACHE_RUN_USER: apps
