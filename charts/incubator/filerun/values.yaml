@@ -33,7 +33,7 @@ service:
     ports:
       main:
         port: 10199
-        protocol: HTTP
+        protocol: http
         targetPort: 80
 
 persistence:
@@ -50,4 +50,5 @@ mariadb:
   mariadbDatabase: filerun
 
 portal:
-  enabled: true
+  open:
+    enabled: true
