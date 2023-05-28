@@ -1,6 +1,6 @@
 image:
-  repository: tccr.io/truecharts/filerun
-  tag: latest@sha256:8d0fb96cc91db060d912a3986dbecc0275f2e5d600b7731e7320e20e11e90f8b
+  repository: filerun/filerun
+  tag: 8.1@sha256:b67bb25ab08b605d7095fdb4c48534b528da4f2ea9fc4a14f5c4f4ef10263875
   pullPolicy: IfNotPresent
 
 securityContext:
