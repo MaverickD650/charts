@@ -7,10 +7,8 @@ securityContext:
   container:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
-    allowPrivilegeEscalation: true
-    privileged: true
-    runAsUser: 0
-    runAsGroup: 0
+    runAsUser: 1000
+    runAsGroup: 1000
 
 env:
   APACHE_RUN_USER: apps
