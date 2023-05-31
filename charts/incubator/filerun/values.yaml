@@ -43,6 +43,9 @@ persistence:
   userfile:
     enabled: true
     mountPath: "/user-files"
+  supervisord:
+    enabled: true
+    mountPath: "/filerun/html/system/data/temp/"
 
 mariadb:
   enabled: true
