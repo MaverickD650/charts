@@ -42,7 +42,7 @@ persistence:
     mountPath: "/var/www/html"
   userfile:
     enabled: true
-    mountPath: "/user-files"
+    mountPath: "/filerun/user-files"
   supervisord:
     enabled: true
     mountPath: "/filerun/html/system/data/temp/"
