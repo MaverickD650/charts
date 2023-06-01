@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/diced/zipline
   pullPolicy: IfNotPresent
-  tag: 3.7.0@sha256:6ff84bd03bde7d1f108ed87b3f953027d5dace33e2c8238ca1fbe432a499f723
+  tag: trunk-3.7.0@sha256:71b8408db3d0fefd7f3980b0d9236bc1ad8da0bf5e8b2ba9162d619866b52c21
 
 securityContext:
   container:

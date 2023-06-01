@@ -6,8 +6,8 @@ dependencies:
     version: 12.10.10
 deprecated: false
 description: API Support for your favorite torrent trackers.
-home: https://truecharts.org/charts/stable/jackett
-icon: https://truecharts.org/img/hotlink-ok/chart-icons/jackett.png
+home: https://truecharts.org/charts/incubator/zipline
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/zipline.png
 keywords:
   - zipline
   - files
@@ -16,7 +16,7 @@ maintainers:
   - email: info@truecharts.org
     name: TrueCharts
     url: https://truecharts.org
-name: jackett
+name: zipline
 sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/jackett
   - https://github.com/Jackett/Jackett
