@@ -45,7 +45,7 @@ persistence:
     mountPath: "/filerun/user-files"
   supervisord:
     enabled: true
-    mountPath: "/filerun/html/system/data/temp/"
+    mountPath: "/var/www/html/system/data/temp/"
 
 mariadb:
   enabled: true
