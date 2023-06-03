@@ -61,9 +61,10 @@ persistence:
     mountPath: "/config"
 
 cnpg:
-  enabled: true
-  user: joplin
-  database: joplin
+  main:
+    enabled: true
+    user: joplin
+    database: joplin
 
 portal:
   open:
