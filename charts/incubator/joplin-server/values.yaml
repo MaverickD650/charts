@@ -21,13 +21,6 @@ workload:
    podSpec:
     containers:
       main:
-        probes:
-          liveness:
-            path: "/api/ping"
-          readiness:
-            path: "/api/ping"
-          startup:
-            path: "/api/ping"
         env:
           APP_BASE_URL: "http://localhost:22300"
           APP_PORT: "22300"
@@ -54,6 +47,13 @@ workload:
           MAILER_AUTH_PASSWORD: ""
           MAILER_NOREPLY_NAME: ""
           MAILER_NOREPLY_EMAIL: ""
+        probes:
+          liveness:
+            path: "/api/ping"
+          readiness:
+            path: "/api/ping"
+          startup:
+            path: "/api/ping"
 
 persistence:
   config:
