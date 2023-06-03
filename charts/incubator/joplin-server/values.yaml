@@ -29,8 +29,8 @@ workload:
           startup:
             path: "/api/ping"
         env:
-          APP_BASE_URL: http://localhost:22300
-          APP_PORT: 22300
+          APP_BASE_URL: "http://localhost:22300"
+          APP_PORT: "22300"
           DB_CLIENT: "pg"
           POSTGRES_DATABASE:
             secretKeyRef:
@@ -46,9 +46,9 @@ workload:
             secretKeyRef:
               name: dbcreds
               key: plainhost
-          MAILER_ENABLED: 0
+          MAILER_ENABLED: "0"
           MAILER_HOST: ""
-          MAILER_PORT: 465
+          MAILER_PORT: "465"
           MAILER_SECURE: true
           MAILER_AUTH_USER: ""
           MAILER_AUTH_PASSWORD: ""
