@@ -62,6 +62,10 @@ persistence:
     enabled: true
     mountPath: "/var/run/supervisord/"
     targetSelectAll: true
+  supervisordconf:
+    enabled: true
+    mountPath: "/var/www/html/system/data/temp/"
+    targetSelectAll: true
 
 mariadb:
   enabled: true
