@@ -28,56 +28,25 @@ workload:
     podSpec:
       containers:
         main:
-          env:
-            CP_DATABASE_HOSTNAME:
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
-                key: plainhost
-            CP_DATABASE_NAME: castopod
-            CP_DATABASE_USERNAME: castopod
-            CP_DATABASE_PASSWORD:
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
-                key: mariadb-password
-            CP_BASEURL: "https://example.example.com"
-            CP_ANALYTICS_SALT:
-              - secretRef:
-                name: secrets
-                key: CP_ANALYTICS_SALT
-            CP_CACHE_HANDLER: "redis"
-            CP_REDIS_HOST: 
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
-                key: plainhost
-            CP_REDIS_PASSWORD:
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
-                key: redis-password
-            CP_REDIS_DATABASE:
-              secretKeyRef:
-                expandObjectName: false
-                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
-                key: url
+          envFrom:
+            - configMapRef:
+              name: configmap-config
           probes:
             liveness:
               enabled: true
               type: http
               path: /health
-              port: 80
+              port: 8000
             readiness:
               enabled: true
               type: http
               path: /health
-              port: 80
+              port: 8000
             startup:
               enabled: true
               type: http
               path: /health
-              port: 80
+              port: 8000
 
 castopodConfig:
   baseUrl: "https://example.example.com"
