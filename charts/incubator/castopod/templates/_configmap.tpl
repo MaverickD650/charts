@@ -1,5 +1,5 @@
 {{/* Define the configmap */}}
-{{- define "castopod.configmap.config" -}}
+{{- define "castopod.configmap" -}}
 enabled: true
 data:
   CP_DATABASE_HOSTNAME:

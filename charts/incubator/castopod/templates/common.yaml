@@ -1,10 +1,16 @@
 {{/* Make sure all variables are set properly */}}
 {{- include "tc.v1.common.loader.init" . }}
 
+{{/* Render configmap for castosecret */}}
+{{- $configmapFile := include "castopod.configmap" . | fromYaml -}}
+{{- if $configmapFile -}}
+  {{- $_ := set .Values.configmap "castopodconfig" $configmapFile -}}
+{{- end -}}
+
 {{/* Render secrets for LLDAP */}}
 {{- $secrets := include "casto.secrets" . | fromYaml -}}
 {{- if $secrets -}}
-  {{- $_ := set .Values.secret "secret" $secrets -}}
+  {{- $_ := set .Values.secret "castopodsecret" $secrets -}}
 {{- end -}}
 
 {{/* Render the templates */}}

@@ -30,7 +30,9 @@ workload:
         main:
           envFrom:
             - configMapRef:
-              name: configmap-config
+                name: castopodconfig
+            - secretRef:
+                name: castopodsecret
           probes:
             liveness:
               enabled: true
