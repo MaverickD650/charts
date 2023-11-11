@@ -21,11 +21,13 @@ env:
   FR_DB_PORT: "3306"
   FR_DB_HOST:
     secretKeyRef:
-      name: mariadbcreds
+      expandObjectName: false
+      name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
       key: plainhost
   FR_DB_PASS:
     secretKeyRef:
-      name: mariadbcreds
+      expandObjectName: false
+      name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
       key: mariadb-password
 
 service:
