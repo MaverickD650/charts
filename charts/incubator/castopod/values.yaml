@@ -9,6 +9,13 @@ securityContext:
     runAsNonRoot: false
     runAsUser: 0
     runAsgroup: 0
+  capabilities:
+    add:
+      - CHOWN
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
 
 service:
   main:
@@ -71,6 +78,14 @@ workload:
               type: http
               path: /health
               port: 80
+
+castopodConfig:
+  baseUrl: "https://example.example.com"
+  webTimeout: 900
+  webMaxBodySize: 512
+  phpMemoryLimit: 512
+  enable2fa: false
+  disableHttpsRedirect: true
 
 persistence:
   media:
