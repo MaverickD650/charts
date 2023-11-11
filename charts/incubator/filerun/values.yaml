@@ -10,24 +10,38 @@ securityContext:
     runAsUser: 0
     runAsGroup: 0
 
-env:
-  APACHE_RUN_USER: apps
-  APACHE_RUN_USER_ID: "{{ .Values.security.PUID }}"
-  APACHE_RUN_GROUP: apps
-  APACHE_RUN_GROUP_ID: "{{ .Values.SecurityContext.fsGroup }}"
-  FR_DB_NAME: "filerun"
-  FR_DB_USER: "filerun"
-  FR_DB_PORT: "3306"
-  FR_DB_HOST:
-    secretKeyRef:
-      expandObjectName: false
-      name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
-      key: plainhost
-  FR_DB_PASS:
-    secretKeyRef:
-      expandObjectName: false
-      name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
-      key: mariadb-password
+workload:
+  main:
+    podSpec:
+      initContainers:
+        supervisord-init:
+          enabled: true
+          imageSelector:
+          type: init
+          command:
+            - sh
+            - -c 
+            - mkdir -p /var/run/supervisord/
+    containers: 
+      main:
+        env:
+          APACHE_RUN_USER: apps
+          APACHE_RUN_USER_ID: "{{ .Values.security.PUID }}"
+          APACHE_RUN_GROUP: apps
+          APACHE_RUN_GROUP_ID: "{{ .Values.SecurityContext.fsGroup }}"
+          FR_DB_NAME: "filerun"
+          FR_DB_USER: "filerun"
+          FR_DB_PORT: "3306"
+          FR_DB_HOST:
+            secretKeyRef:
+              expandObjectName: false
+              name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+              key: plainhost
+          FR_DB_PASS:
+            secretKeyRef:
+              expandObjectName: false
+              name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+              key: mariadb-password
 
 service:
   main:
@@ -46,7 +60,8 @@ persistence:
     mountPath: "/filerun/user-files"
   supervisord:
     enabled: true
-    mountPath: "/var/www/html/system/data/temp/"
+    mountPath: "/var/run/supervisord/"
+    targetSelectAll: true
 
 mariadb:
   enabled: true
