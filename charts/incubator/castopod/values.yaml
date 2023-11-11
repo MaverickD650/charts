@@ -19,9 +19,14 @@ workload:
       containers:
         main:
           env:
-            MYSQL_DATABASE: {{ .Values.mariadb.mariadbDatabase | quote }}
-            MYSQL_USER: {{ .Values.mariadb.mariadbUsername | quote }}
-            MYSQL_PASSWORD:
+            CP_DATABASE_HOSTNAME:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: plainhost
+            CP_DATABASE_NAME: castopod
+            CP_DATABASE_USERNAME: castopod
+            CP_DATABASE_PASSWORD:
               secretKeyRef:
                 expandObjectName: false
                 name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
@@ -71,6 +76,11 @@ persistence:
 
 redis:
   enabled: true
+
+mariadb:
+  enabled: true
+  mariadbUsername: castopod
+  mariadbDatabase: castopod
 
 portal:
   open:
