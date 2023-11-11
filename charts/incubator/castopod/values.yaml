@@ -1,0 +1,77 @@
+image:
+  repository: castopod/castopod
+  pullPolicy: IfNotPresent
+  tag: v1.6.5@sha256:671c1b70ab96a26598549fe4334555850b9319b94b028f7e512f90c5d3b97359
+
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+
+service:
+  main:
+    ports:
+      main:
+        port: 8000
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            MYSQL_DATABASE: {{ .Values.mariadb.mariadbDatabase | quote }}
+            MYSQL_USER: {{ .Values.mariadb.mariadbUsername | quote }}
+            MYSQL_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
+                key: mariadb-password
+            CP_BASEURL: "https://example.example.com"
+            CP_ANALYTICS_SALT:
+              - secretRef:
+                name: secrets
+                key: CP_ANALYTICS_SALT
+            CP_CACHE_HANDLER: "redis"
+            CP_REDIS_HOST: 
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: plainhost
+            CP_REDIS_PASSWORD:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: redis-password
+            CP_REDIS_DATABASE:
+              secretKeyRef:
+                expandObjectName: false
+                name: '{{ printf "%s-%s" .Release.Name "rediscreds" }}'
+                key: url
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /health
+              port: 80
+            readiness:
+              enabled: true
+              type: http
+              path: /health
+              port: 80
+            startup:
+              enabled: true
+              type: http
+              path: /health
+              port: 80
+
+persistence:
+  media:
+    enabled: true
+    mountPath: "/var/www/castopod/public/media"
+
+redis:
+  enabled: true
+
+portal:
+  open:
+    enabled: true
