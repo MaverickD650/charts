@@ -35,18 +35,15 @@ workload:
             liveness:
               enabled: true
               type: http
-              path: /health
-              port: 8000
+              path: "/health"
             readiness:
               enabled: true
               type: http
-              path: /health
-              port: 8000
+              path: "/health"
             startup:
               enabled: true
               type: http
-              path: /health
-              port: 8000
+              path: "/health"
 
 castopodConfig:
   baseUrl: "https://example.example.com"
