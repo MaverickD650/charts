@@ -9,12 +9,6 @@ securityContext:
     runAsNonRoot: false
     runAsUser: 0
     runAsGroup: 0
-    capabilities:
-      add:
-        - CHOWN
-        - SETGID
-        - SETUID
-        - FOWNER
 
 env:
   APACHE_RUN_USER: apps
