@@ -8,10 +8,11 @@ securityContext:
     readOnlyRootFilesystem: false
     runAsNonRoot: false
     capabilities:
-      - CHOWN
-      - SETGID
-      - SETUID
-      - FOWNER
+      add:
+        - CHOWN
+        - SETGID
+        - SETUID
+        - FOWNER
 
 env:
   APACHE_RUN_USER: apps
