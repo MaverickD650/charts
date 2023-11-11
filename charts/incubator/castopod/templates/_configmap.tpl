@@ -15,10 +15,6 @@ data:
       name: '{{ printf "%s-%s" .Release.Name "mariadbcreds" }}'
       key: mariadb-password
   CP_BASEURL: "https://example.example.com"
-  CP_ANALYTICS_SALT:
-    secretRef:
-      name: secrets
-      key: CP_ANALYTICS_SALT
   CP_CACHE_HANDLER: "redis"
   CP_REDIS_HOST: 
     secretKeyRef:
