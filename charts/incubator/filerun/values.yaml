@@ -16,7 +16,7 @@ workload:
       initContainers:
         supervisord-init:
           enabled: true
-          imageSelector:
+          imageSelector: image
           type: init
           command:
             - sh
