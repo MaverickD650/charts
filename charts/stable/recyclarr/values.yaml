@@ -1,25 +1,15 @@
 image:
   pullPolicy: IfNotPresent
   repository: tccr.io/truecharts/recyclarr
-  tag: 4.4.1@sha256:e22df9de0cf6f7a3b960efcd52758931acbb0bd880f44326b14bfd44386e3eb7
+  tag: v6.0.2@sha256:1e4fefc526d63c6a4ae034eb03def2c0fa44696ad8ad9c3743ffebc5d74875f2
+
 service:
   main:
     enabled: false
     ports:
       main:
         enabled: false
-persistence:
-  config:
-    enabled: true
-    mountPath: /config
-    targetSelectAll: true
-portal:
-  open:
-    enabled: false
-securityContext:
-  container:
-    runAsGroup: 568
-    runAsUser: 568
+
 workload:
   main:
     podSpec:
@@ -30,7 +20,8 @@ workload:
           imageSelector: "image"
           command:
             - recyclarr
-            - create-config
+            - config
+            - create
       containers:
         main:
           probes:
@@ -42,3 +33,13 @@ workload:
               enabled: false
           env:
             CRON_SCHEDULE: "@daily"
+
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+    targetSelectAll: true
+
+portal:
+  open:
+    enabled: false

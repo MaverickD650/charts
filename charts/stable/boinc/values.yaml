@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/boinc
   pullPolicy: IfNotPresent
-  tag: latest@sha256:04894f7b1483bfeea2ac55dd31708e920fcf29304ae2f3e4dc715a8ec80cb56e
+  tag: latest@sha256:40cb983d5b0177a27971cc6f813dab4baa003137e9b412520988c4599c87840d
 
 securityContext:
   container:

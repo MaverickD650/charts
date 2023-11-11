@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/redis
   pullPolicy: IfNotPresent
-  tag: 7.0.11@sha256:4653f0bff0f593ae2fd5782fbca41c15e0fbc631ab339ee74fb0e82ef37ed90a
+  tag: v7.2.3@sha256:583d852032f7537c271db380ed3f500de8ece51b66ac6315b66dd195bed28740
 
 workload:
   main:

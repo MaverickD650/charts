@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/homarr
-  tag: v0.12.2@sha256:9872f649817fe38292747f11cb353642c85b5369fe5c47a12b9e7f0aa0128716
+  tag: v0.13.4@sha256:ac61ed7667bf4eb18bef09a735ecebf453e9e0dbf993dd73d25e526164bbf009
   pullPolicy: IfNotPresent
 service:
   main:

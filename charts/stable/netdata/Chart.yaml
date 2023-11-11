@@ -1,9 +1,9 @@
 apiVersion: v2
-appVersion: "1.39.1"
+appVersion: "1.43.2"
 dependencies:
   - name: common
     repository: https://library-charts.truecharts.org
-    version: 12.10.4
+    version: 14.3.5
 description: Netdata is high-fidelity infrastructure monitoring and troubleshooting.
 home: https://truecharts.org/charts/stable/netdata
 icon: https://truecharts.org/img/hotlink-ok/chart-icons/netdata.png
@@ -19,8 +19,7 @@ name: netdata
 sources:
   - https://github.com/truecharts/charts/tree/master/charts/stable/netdata
   - https://github.com/netdata
-version: 5.0.19
+version: 6.0.14
 annotations:
-  truecharts.org/catagories: |
-    - utilities
+  truecharts.org/category: utilities
   truecharts.org/SCALE-support: "true"

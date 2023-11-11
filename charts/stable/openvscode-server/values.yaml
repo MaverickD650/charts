@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/openvscode-server
   pullPolicy: IfNotPresent
-  tag: v1.78.2@sha256:ea7f94e33208288ac5c2040338f2ac5d5a4b4514b29c0755d716129effc6b3ee
+  tag: v1.84.0@sha256:8a18e772eb43676285d3f86b40b19b21df880ec29bee76c4f893d1510e45cd0b
 # secretEnv:
 #   CONNECTION_TOKEN: "somerandomstring"
 #   CONNECTION_SECRET: ""

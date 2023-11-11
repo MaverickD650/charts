@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/qdirstat
-  tag: v23.04.1@sha256:010d5790966b5a8956e73fdc8379514876f37fe74c94b6768e69f0e297a4d3bd
+  tag: v23.11.1@sha256:084e989edf04a1856eaf0f07a2ad0331b0145d32b3acb3873ff920d8d498dfeb
   pullPolicy: IfNotPresent
 service:
   main:

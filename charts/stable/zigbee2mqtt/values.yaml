@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/zigbee2mqtt
-  tag: v1.30.4@sha256:65d64fbba69f496df34ea877fc1b69626a428ca68a5408bda7ec6dd49f7eabd6
+  tag: v1.33.2@sha256:f67e8f9f5efee433f1e8bf2bed2ff813a9af8aead0cfeb0baa902238e5d46045
   pullPolicy: IfNotPresent
 service:
   main:

@@ -194,6 +194,7 @@ copy_docs() {
 prep_helm() {
     if [[ -z "$standalone" ]]; then
     helm repo add truecharts https://charts.truecharts.org
+    helm repo add truecharts-deps https://deps.truecharts.org
     helm repo add truecharts-library https://library-charts.truecharts.org
     helm repo update
     fi
@@ -231,7 +232,8 @@ patch_apps() {
     cat ${target}/Chart.yaml | grep "icon" >> catalog/${train}/${chartname}/item.yaml
     sed -i "s|^icon:|icon_url:|g" catalog/${train}/${chartname}/item.yaml
     echo "categories:" >> catalog/${train}/${chartname}/item.yaml
-    # cat ${target}/Chart.yaml | yq '.annotations."truecharts.org/catagories"' -r >> catalog/${train}/${chartname}/item.yaml
+    # category=$(cat ${target}/Chart.yaml | yq '.annotations."truecharts.org/category"' -r)
+    # echo "- $category" >> catalog/${train}/${chartname}/item.yaml
     # Generate SCALE App description file
     # cat ${target}/Chart.yaml | yq .description -r >> ${target}/app-readme.md
     echo "" >> ${target}/app-readme.md

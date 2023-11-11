@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/filebrowser
   pullPolicy: IfNotPresent
-  tag: 2.23.0@sha256:9056708e06dfa8b668f4bf8aa2eaa6e587dbd20a218c1109126dfe38d4b77f5a
+  tag: v2.26.0@sha256:804ce88e9ed4d2685ea2e2aea3d61b9bec96ec3405ae529ec6f6350c1625ac78
 
 workload:
   main:

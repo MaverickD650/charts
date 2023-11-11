@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/outline
   pullPolicy: IfNotPresent
-  tag: v0.69.2@sha256:763e7676ac37fe4681abce813212a6c463b3cbefc6c573669c12736844accd8f
+  tag: v0.72.2@sha256:ead80ba877fdc1f2f7d8929226d7fac08cc7877a1a3883b081f71d5bd39f9473
 service:
   main:
     ports:

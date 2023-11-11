@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/ddns-go
   pullPolicy: IfNotPresent
-  tag: v5.2.2@sha256:a4948be84d7cc270c9fc84909caae19874936a05e87273b5e6ab0ec8114fb2b4
+  tag: v5.6.6@sha256:2f4c0c4a9e10c54b84868e082d3fd4417526e18e26f3cf12c764555d30644c88
 
 securityContext:
   container:

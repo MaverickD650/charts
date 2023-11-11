@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/docker-in-docker
   pullPolicy: IfNotPresent
-  tag: v23.0.6@sha256:f0392a7e7a7b9f977733bea6904754332e8e8279bad0be3437b6ae845cbf1a40
+  tag: v24.0.7@sha256:151a5f602aae8305be20f9e35fe7d51451b9d9eefe939d02b15c6195684b3726
 hostNetwork: true
 
 securityContext:
@@ -21,26 +21,7 @@ service:
     ports:
       main:
         port: 2376
-        type: HTTPS
-
-lifecycle:
-  postStart:
-    exec:
-      command:
-        - /bin/bash
-        - -c
-        - |
-          if [ "${COMPOSE_FILE}" ]; then
-            counter=0;
-            while ! docker info > /dev/null 2>&1 && [[ ${counter} -lt 10 ]]; do
-              echo "docker not running yet. Waiting..." >> /proc/1/fd/1;
-              sleep 5;
-              counter=$((counter+1));
-            done
-            docker-compose -f "${COMPOSE_FILE}" up -d && echo "Loading COMPOSE_FILE at location ${COMPOSE_FILE}" >> /proc/1/fd/1;
-          else
-            echo "COMPOSE_FILE not set, not auto-loading compose-file" >> /proc/1/fd/1;
-          fi
+        type: https
 
 workload:
   main:
@@ -60,7 +41,24 @@ workload:
           env:
             DOCKER_TLS_CERTDIR: /certs
             COMPOSE_FILE: ""
-
+          lifecycle:
+            postStart:
+              type: exec
+              command:
+                - /bin/bash
+                - -c
+                - |
+                  if [ "${COMPOSE_FILE}" ]; then
+                    counter=0;
+                    while ! docker info > /dev/null 2>&1 && [[ ${counter} -lt 10 ]]; do
+                      echo "docker not running yet. Waiting..." >> /proc/1/fd/1;
+                      sleep 5;
+                      counter=$((counter+1));
+                    done
+                    docker-compose -f "${COMPOSE_FILE}" up -d && echo "Loaded COMPOSE_FILE at location ${COMPOSE_FILE}" >> /proc/1/fd/1;
+                  else
+                    echo "COMPOSE_FILE not set, not auto-loading compose-file" >> /proc/1/fd/1;
+                  fi
     type: StatefulSet
     replicas: 1
     strategy: RollingUpdate

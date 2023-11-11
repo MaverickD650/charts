@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/pihole
   pullPolicy: IfNotPresent
-  tag: v2023.05.0@sha256:2a34bfd4117cbef30624fa41dc2cdb87bd053da09dec6b80b2b1e1087e677f64
+  tag: v2023.10.0@sha256:a122d1cc365faa58637d8486f7e4a67f6a38c7b770c130eb1d879713563392b9
 
 pihole:
   webPassword: "somepassword"

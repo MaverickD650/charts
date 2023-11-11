@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/makemkv
-  tag: v23.04.2@sha256:1b84b67d2fa4ac8987c665a2d128bd291073a2dfa664e89e4114fb2a0fc8d56b
+  tag: v23.11.1@sha256:a606516585b52568c41d46f74781feef16007b74b968509afc12474ba62682ff
   pullPolicy: IfNotPresent
 makemkv:
   # General Settings

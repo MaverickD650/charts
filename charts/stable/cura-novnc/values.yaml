@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: tccr.io/truecharts/cura-novnc
-  tag: latest@sha256:1f34f33899555d94a212a35b6e3c7531daa26f8d2e7b2169cec78c7e16cf69df
+  tag: latest@sha256:6b4966698c15a277cdede535dc3f4862bba55b89102778f9d9286347ceb1940d
 
 securityContext:
   container:

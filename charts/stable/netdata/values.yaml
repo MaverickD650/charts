@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/netdata
-  tag: v1.39.1@sha256:7e2fd97a2523df32728781bf16084e6a383d1bb928572acecf091459a667ff8d
+  tag: v1.43.2@sha256:a397ce76b84899a04269cf2075016c15b2254210c4a897b67c29abdeb66c4b43
   pullPolicy: IfNotPresent
 # -- The service account the pods will use to interact with the Kubernetes API
 serviceAccount:
@@ -138,6 +138,7 @@ securityContext:
 workload:
   main:
     podSpec:
+      automountServiceAccountToken: true
       initContainers:
         create-config:
           enabled: true

@@ -1,0 +1,43 @@
+image:
+  repository: tccr.io/truecharts/mc-router
+  pullPolicy: IfNotPresent
+  tag: v1.20.0@sha256:70d247c6385241a6f52f81cd317bcf66d59f7efdd58609f0ad29af1cf5d9cded
+
+service:
+  main:
+    ports:
+      main:
+        port: 25564
+  minecraft:
+    enabled: true
+    ports:
+      minecraft:
+        enabled: true
+        port: 25565
+
+mcrouter:
+  host_minecraft: []
+  #  - "minecraft.local=minecraft-java.ix-minecraft-java.svc.cluster.local:25565"
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              enabled: false
+            readiness:
+              enabled: false
+            startup:
+              enabled: false
+          envFrom:
+            - secretRef:
+                name: "secrets"
+          env:
+            API_BINDING: ":{{ .Values.service.main.ports.main.port }}"
+            PORT: "{{ .Values.service.minecraft.ports.minecraft.port }}"
+
+portal:
+  open:
+    enabled: false

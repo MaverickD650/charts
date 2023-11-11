@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/czkawka
   pullPolicy: IfNotPresent
-  tag: v23.04.1@sha256:042868292fd83bc3037f8c7529b42a87851e1ba267c9a5432a0752bc8052590e
+  tag: v23.11.1@sha256:81a48948f09caa775f23c0f46d274bf1dbee21d06d9afc3570a3d6cdd6f10f9b
 
 securityContext:
   container:

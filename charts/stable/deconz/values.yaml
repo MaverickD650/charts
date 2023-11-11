@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/deconz
-  tag: 2.22.00@sha256:41538ed01e8460acad5c1247afd572d52d1c54e8a1fcc51c9713899f5da6bde7
+  tag: v2.24.1@sha256:8b42de6c62bc74c669827fad7a48c3009a134d625f522e3545ee76a332f0c666
   pullPolicy: IfNotPresent
 
 securityContext:

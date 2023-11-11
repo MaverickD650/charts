@@ -1,16 +1,15 @@
 image:
   repository: tccr.io/truecharts/prometheus
-  tag: v2.44.0@sha256:b4baeb2de94c734dbe36910e3e1a28c51e915ff355760863ad80af4fe7f88d29
+  tag: v2.47.2@sha256:92397b84686557a47be6a91fd80d1fe375301f150982ec9c0fb1a45c44ecedfa
 
 thanosImage:
   repository: tccr.io/truecharts/thanos
-  tag: 0.31.0@sha256:28282d3e63f84cdeeb05e965b173b610d5597997acc7ce75d5849207b0f97b28
+  tag: v0.32.5@sha256:4cea5ca36f1567993344c3375b9a80d8073dbc8d530656644d36c90683f96464
 
 alertmanagerImage:
   repository: tccr.io/truecharts/alertmanager
-  tag: 0.25.0@sha256:6b534671b83aa7fbd91d1b10bf0f1b29b948e4b300f8359a86043d0deba07207
-manifestManager:
-  enabled: true
+  tag: v0.26.0@sha256:f0bbf30d4901be33855b0fb4b71e3d7410b872a33b9d08cd2d7ed576505e40a8
+
 global:
   labels: {}
 workload:
@@ -515,6 +514,14 @@ prometheus:
   ## See https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#namespaceselector for usage
   ##
   probeNamespaceSelector: {}
+  ## @param prometheus.scrapeConfigSelector The scrapeConfigs to be selected for target discovery.
+  ## If {}, select all scrapeConfigs
+  ##
+  scrapeConfigSelector: {}
+  ## @param prometheus.scrapeConfigNamespaceSelector Namespaces to be selected for scrapeConfig discovery.
+  ## If {}, select all namespaces.
+  ## If nil, select own namespace.
+  scrapeConfigNamespaceSelector: {}
   ## @param prometheus.retention Metrics retention days
   ##
   retention: 31d

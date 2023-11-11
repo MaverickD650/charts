@@ -1,0 +1,94 @@
+image:
+  repository: tccr.io/truecharts/local-ai
+  pullPolicy: IfNotPresent
+  tag: v1.40.0@sha256:f17bc18198bfb6c2aee2b35fca1adb528ea91fd53be30157de3e9be6f0f4d810
+ffmpegImage:
+  repository: tccr.io/truecharts/local-ai-ffmpeg
+  pullPolicy: IfNotPresent
+  tag: v1.40.0@sha256:0c1c603f74fe343940e17fb2f031300e807e30658bffb7de6f65bf96463023f2
+cublasCuda12Image:
+  repository: tccr.io/truecharts/local-ai-cublas-cuda12
+  pullPolicy: IfNotPresent
+  tag: v1.40.0-cublas@sha256:da43881bdfe7c8f2affebe5b33ef916ee6227c742baa9869282bc6bb5b3f741b
+cublasCuda12FfmpegImage:
+  repository: tccr.io/truecharts/local-ai-cublas-cuda12-ffmpeg
+  pullPolicy: IfNotPresent
+  tag: v1.40.0-cublas-cuda12@sha256:2839da7155a63ee46988468c78e72e71720edd9069645a37e6aafc7b5039a4c8
+cublasCuda11Image:
+  repository: tccr.io/truecharts/local-ai-cublas-cuda11
+  pullPolicy: IfNotPresent
+  tag: v1.40.0-cublas@sha256:8a24cfa26b79ea127f465b6b41af10678e38efa65f65c389de180fa722383bcc
+cublasCuda11FfmpegImage:
+  repository: tccr.io/truecharts/local-ai-cublas-cuda11-ffmpeg
+  pullPolicy: IfNotPresent
+  tag: v1.40.0-cublas-cuda11@sha256:9c21382a0056463209742d703284349292e198f48144da594530e1aad34fcb1e
+
+securityContext:
+  container:
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+    runAsUser: 0
+    runAsGroup: 0
+
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        port: 8080
+
+localai:
+  # Specify a build type. Available: cublas, openblas, clblas.
+  build_type: "openblas"
+  debug: false
+  cors: true
+  cors_allow_origins: "*"
+  galleries: []
+  #  - name: model-gallery
+  #    url: github:go-skynet/model-gallery/index.yaml
+  preload_models: []
+  #    url: github:go-skynet/model-gallery/gpt4all-j.yaml
+  # UPLOAD_LIMIT
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /readyz
+            readiness:
+              enabled: true
+              type: http
+              path: /readyz
+            startup:
+              enabled: true
+              type: tcp
+          imageSelector: image
+          env:
+            ADDRESS: ":{{ .Values.service.main.ports.main.port }}"
+            MODELS_PATH: "{{ .Values.persistence.models.mountPath }}"
+            IMAGE_PATH: "{{ .Values.persistence.images.mountPath }}"
+            BUILD_TYPE: "{{ .Values.localai.build_type }}"
+            # breaks chart if true, keep it false.
+            REBUILD: false
+            DEBUG: "{{ .Values.localai.debug }}"
+            CORS: "{{ .Values.localai.cors }}"
+            GALLERIES: "{{ toJson .Values.localai.galleries }}"
+            PRELOAD_MODELS: "{{ toJson .Values.localai.preload_models }}"
+            CORS_ALLOW_ORIGINS: "{{ .Values.localai.cors_allow_origins }}"
+
+persistence:
+  models:
+    enabled: true
+    mountPath: "/models"
+  images:
+    enabled: true
+    mountPath: "/images"
+
+portal:
+  open:
+    enabled: false

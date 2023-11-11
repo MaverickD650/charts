@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/node-red
   pullPolicy: IfNotPresent
-  tag: 3.0.2@sha256:ba3361b3dc11650cdb44c43220a0bd5397342928dca092f33c044ba58032acc1
+  tag: v3.1.0@sha256:182a618f580a5ab0d16c6f4ed69675473db3985095bd891ae190d2284a0e5250
 service:
   main:
     ports:

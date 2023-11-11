@@ -1,55 +1,99 @@
 image:
   repository: tccr.io/truecharts/odoo
   pullPolicy: IfNotPresent
-  tag: v15.0@sha256:f7d2ab13cf5214ddfbc09d5322bd61ad064a877edbec1620579392838a0a44d7
+  tag: v16.0.0@sha256:7704836f740f58a6fa1badddba0ee780ed02d5767690ab2937d0cf14d9165128
+
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsUser: 101
+    runAsGroup: 101
+
 service:
   main:
     ports:
       main:
         port: 8069
-        targetPort: 8069
-  odoo:
-    enabled: true
-    ports:
-      xmlrpcs:
-        enabled: true
-        port: 8071
-        targetPort: 8071
-      longpolling:
-        enabled: true
-        port: 8072
-        targetPort: 8072
-persistence:
-  odoo:
-    enabled: true
-    mountPath: "/var/lib/odoo"
-  addons:
-    enabled: true
-    mountPath: "/mnt/extra-addons"
-# Enabled postgres
-cnpg:
-  main:
-    enabled: true
 
-    user: odoo
-    database: postgres
-portal:
-  open:
-    enabled: true
+odoo:
+  additionalConf: []
 
 workload:
   main:
     podSpec:
+      initContainers:
+        init-db:
+          type: install
+          enabled: true
+          imageSelector: "image"
+          env:
+            ODOO_RC: /etc/odoo/odoo.conf
+          command:
+            - /bin/bash
+          args:
+            - -c
+            - |
+              /usr/bin/odoo --config=/etc/odoo/odoo.conf \
+                            --stop-after-init \
+                            --without-demo=all \
+                            --init=base
       containers:
         main:
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /web/health
+            readiness:
+              enabled: true
+              type: http
+              path: /web/health
+            startup:
+              enabled: true
+              type: http
+              path: /web/health
           env:
-            USER: "{{ .Values.cnpg.main.user }}"
-            PORT: 5432
-            PASSWORD:
-              secretKeyRef:
-                name: cnpg-main-user
-                key: password
-            HOST:
-              secretKeyRef:
-                name: cnpg-main-urls
-                key: host
+            ODOO_RC: /etc/odoo/odoo.conf
+
+persistence:
+  odoo:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: "/var/lib/odoo"
+        init-db:
+          mountPath: "/var/lib/odoo"
+  addons:
+    enabled: true
+    targetSelector:
+      main:
+        main:
+          mountPath: "/mnt/extra-addons"
+        init-db:
+          mountPath: "/mnt/extra-addons"
+  odoo-config:
+    enabled: true
+    type: configmap
+    objectName: odoo-config
+    targetSelector:
+      main:
+        main:
+          mountPath: /etc/odoo/odoo.conf
+          subPath: odoo.conf
+          readOnly: true
+        init-db:
+          mountPath: /etc/odoo/odoo.conf
+          subPath: odoo.conf
+          readOnly: true
+
+# Enabled postgres
+cnpg:
+  main:
+    enabled: true
+    user: odoo
+    database: odoo
+
+portal:
+  open:
+    enabled: true

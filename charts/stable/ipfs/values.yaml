@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/ipfs
   pullPolicy: IfNotPresent
-  tag: v0.20.0@sha256:e157e8fdb1294932814ec084f492e937d6ade294eb0b366b8f649f1681063598
+  tag: v0.24.0@sha256:dcbb7e1c7b7a620df200284f59688b384e7f403dfc2cd912e29915e878080a7e
 service:
   main:
     ports:

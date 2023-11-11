@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/tsmuxer
-  tag: v23.05.1@sha256:aa9ff7c833fb38b6ad83624274d100846bfb68e8aed132e47e1a26aa1dd946fd
+  tag: v23.11.1@sha256:328f4b7d6794e63f73483495634203f06d0992fb7eaa4575031778d3ad6c560a
   pullPolicy: IfNotPresent
 service:
   main:

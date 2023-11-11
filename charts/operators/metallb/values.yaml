@@ -1,14 +1,15 @@
 image:
-  repository: quay.io/metallb/controller
-  tag: v0.13.9
+  repository: tccr.io/truecharts/metallb-controller
+  tag: v0.13.12@sha256:0648f93b8c42b6531b05b1f2c197fd16d367b7a0c2b8b474b15fcb55baaf6867
   pullPolicy:
 speakerImage:
-  repository: quay.io/metallb/speaker
-  tag: v0.13.9
+  repository: tccr.io/truecharts/metallb-speaker
+  tag: v0.13.12@sha256:92d801d823bfe74e2e129573c9f88f9157616bd4128fddec585d5b6c0dc99bd8
   pullPolicy:
 
 workload:
   main:
+    strategy: RollingUpdate
     labels:
       app.kubernetes.io/component: controller
     podSpec:
@@ -39,6 +40,7 @@ workload:
   speaker:
     enabled: true
     type: DaemonSet
+    strategy: RollingUpdate
     labels:
       app.kubernetes.io/component: controller
     podSpec:
@@ -342,8 +344,4 @@ speaker:
 validationFailurePolicy: Fail
 
 manifestManager:
-  enabled: true
-  staging: false
-  install: false
-  check: false
-  delete: true
+  enabled: false

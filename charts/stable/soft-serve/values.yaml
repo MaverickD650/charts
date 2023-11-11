@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/soft-serve
   pullPolicy: IfNotPresent
-  tag: v0.5.4@sha256:f2ee1fecb73bdb3dbf2498931ffb5c3a05ebc3151cd2650d27d9274ae617566e
+  tag: v0.7.1@sha256:6f6b1a84fde4f64945505ebb7ad96159ddd81157b2a0cf1562d2b29e3da21264
 softserve:
   host: localhost
   key_path: /.ssh/soft_serve_server_ed25519

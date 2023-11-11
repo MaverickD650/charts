@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/vaultwarden
   pullPolicy: IfNotPresent
-  tag: 1.28.1@sha256:b8e2476d869797abb514848b256e9e4a8591bffac44cf6574c061ec56aea6dbd
+  tag: v1.30.0@sha256:57bc723900152d5401473f9e458bed388c253f034eeae878984216166cd14967
 manifestManager:
   enabled: true
 service:
@@ -10,13 +10,6 @@ service:
       main:
         port: 10102
         targetPort: 8080
-  ws:
-    enabled: true
-    ports:
-      ws:
-        enabled: true
-        port: 3012
-        targetPort: 3012
 
 workload:
   main:
@@ -73,9 +66,6 @@ vaultwarden:
   ## Default organization name in invitation e-mails that are not coming from a specific organization.
   # defaultInviteName: ""
   showPasswordHint: true
-  # Enable Websockets for notification. https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-WebSocket-notifications
-  # Redirect HTTP path "/notifications/hub" to port 3012. Ingress/IngressRoute controllers are automatically configured.
-  enableWebsockets: true
   # Enable Web Vault (static content). https://github.com/dani-garcia/bitwarden_rs/wiki/Disabling-or-overriding-the-Vault-interface-hosting
   enableWebVault: true
   # Restrict creation of orgs. Options are: 'all', 'none' or a comma-separated list of users.
@@ -105,8 +95,8 @@ vaultwarden:
     ## SMTP sender name, defaults to 'Bitwarden_RS'.
     # fromName: ""
     ## Enable SSL connection.
-    # ssl: true
-    ## SMTP port. Defaults to 25 without SSL, 587 with SSL.
+    # security: starttls
+    ## SMTP port. Defaults to 587 with STARTTLS, 465 with FORCE_TLS, and 25 without SSL.
     # port: 587
     ## SMTP Authentication Mechanisms. Comma-separated options: 'Plain', 'Login' and 'Xoauth2'. Defaults to 'Plain'.
     # authMechanism: Plain
@@ -131,6 +121,12 @@ vaultwarden:
     ## Yubico ID and Secret Key.
     # clientId:
     # secretKey:
+
+  ## Enable Mobile Push Notifications. You must obtain and ID and Key here: https://bitwarden.com/host
+  push:
+    enabled: false
+    # installationId:
+    # installationKey:
 
   ## Logging options. https://github.com/dani-garcia/bitwarden_rs/wiki/Logging
   log:

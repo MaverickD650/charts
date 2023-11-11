@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/flexget
   pullPolicy: IfNotPresent
-  tag: v3.7.2@sha256:08b5559203ac066a3c5811ade46c2c92c54ad6bd38af9d54e9305b53d2a5ab6e
+  tag: v3.9.18@sha256:7944158b79f422a5639cc6d52f2594b02c9e7ab6b300db51ca0b55c682d1010b
 
 securityContext:
   container:

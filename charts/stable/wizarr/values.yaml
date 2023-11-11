@@ -1,0 +1,53 @@
+image:
+  repository: tccr.io/truecharts/wizarr
+  pullPolicy: IfNotPresent
+  tag: v3.4.8@sha256:c35e30f2addedb958a63233b54e48e6ff7934b9e0eaab3b6c2da21eb3c774808
+
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        targetPort: 5690
+        port: 10596
+
+securityContext:
+  container:
+    runAsUser: 0
+    runAsGroup: 0
+    runAsNonRoot: false
+    readOnlyRootFilesystem: false
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              path: "/"
+              type: http
+            readiness:
+              path: "/"
+              type: http
+            startup:
+              type: tcp
+          env:
+            DISABLE_BUILTIN_AUTH: false
+
+persistence:
+  database:
+    enabled: true
+    mountPath: /data/database
+  varrun:
+    enabled: false
+    type: emptyDir
+    mountPath: /var/run
+  nginxrun:
+    enabled: true
+    type: emptyDir
+    mountPath: /run/nginx
+
+portal:
+  open:
+    enabled: true

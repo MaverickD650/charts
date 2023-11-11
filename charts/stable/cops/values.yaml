@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: tccr.io/truecharts/cops
-  tag: latest@sha256:d821ffc986668837fff8766e59cb7b39c6c8af88b45e2de09e58ffe10559d488
+  tag: latest@sha256:143b386c34211f72f1d6b62ff5e57c5f96209c18213051b8d5e42d89df5b21cd
 
 securityContext:
   container:

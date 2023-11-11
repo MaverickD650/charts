@@ -5,7 +5,8 @@ This can be applied to other systems but this specific guide is SCALE specific w
 
 ## Requirements
 
-- Domain name (can be free using DuckDNS or any DDNS) that has your current WAN IP, WAN IP not recommended unless you have a static IP
+- Domain name (can be free using DuckDNS or any DDNS) that has your current WAN IP, WAN IP not recommended unless you have a static IP.
+  - **Caution**: The domain you use should not be behind a reverse proxy, such as Cloudflare Proxy (disable the proxy on the subdomain on the Cloudflare dashboard. The default is Proxied (orange cloud), set to DNS only (grey cloud)), as it won't accurately represent your real WAN IP. To address this, consider creating a subdomain dedicated to Wireguard and disabling the reverse proxy for that specific subdomain only.
 - UDP Port 51820 (or whichever port you specify in Step 4 of the chart setup) Open on your firewall with port-forwarding to your TrueNAS box (this is for the Wireguard Tunnel). This will vary based on the router/firewall setup you're using, for example my Mikrotik has a Firewall rule setup
 
   ![wg-easy-firewall-ex1](img/wg-easy-firewall-ex1.png)
@@ -28,7 +29,7 @@ Set them to `1` and `Enabled`
 
 ### Container Configuration
 
-- Change `WG_HOST` _required_ domain name (or WAN IP if you have a Static IP)
+- Change `WG_HOST` _required_ domain name (or WAN IP if you have a Static IP). A domain name cannot be proxied by cloudflare. ![wg-easy-dns-only](./img/wg-easy-dns-only.png)
 - Change `WG_DEFAULT_ADDRESS` only if it conflicts with other IP addresses on your network
 - Change `WG_DEFAULT_DNS` can be set to your local DNS (eg my PiHole box) or a generic one like `1.1.1.1`
 - Change `ADMIN_PASSWORD` _required_ - Always best to have some security in front of the GUI page

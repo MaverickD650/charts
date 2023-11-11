@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/syslog-ng
   pullPolicy: IfNotPresent
-  tag: v4.2.0@sha256:566cf86b7d9b6343e31f0cf1fe4d9ea8a3db9f3afd8cd364a88891ca4cbbfb36
+  tag: v4.4.0@sha256:2d6d03f0565072b0c4bb4e0490c39e78538db481e3a6e30db189e4c40bbd219a
 service:
   main:
     ports:

@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/unifi
-  tag: 7.3.83@sha256:c88ae3d965592963cc14ff02b4fda7e41bcd4c027b61f80899a851991ad7ebef
+  tag: v7.5.176@sha256:53469ef9de47ce791dc2838b07189a2f418d6d845db5783d841a5bc4c5429efd
   pullPolicy: IfNotPresent
 service:
   main:

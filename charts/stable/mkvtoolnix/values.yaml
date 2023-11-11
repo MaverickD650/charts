@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/mkvtoolnix
-  tag: v23.05.1@sha256:9d32db249ce5c98aefcb63974905d08bd8a423b81f5f4c79670cbe017963fc8f
+  tag: v23.11.2@sha256:201f2822d1222377c8b19094704ffbeeebc5389b91f97c8b0eeb5a774064061e
   pullPolicy: IfNotPresent
 service:
   main:

@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/sabnzbd
   pullPolicy: IfNotPresent
-  tag: v4.0.1@sha256:ef0ff847f91dbef645934b865144acaa998f60a7225156a0b501596a6539ce15
+  tag: v4.1.0@sha256:f1e7c2ff3f06dd175ebb7faf989ae0c3acf1050b25ef6795673b924e87c0276d
 service:
   main:
     ports:

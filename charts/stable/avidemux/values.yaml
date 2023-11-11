@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/avidemux
-  tag: v23.04.1@sha256:cb1f9093704196a2891eef4f587564fe0702e0bf82fec8ec8d611a093505c255
+  tag: v23.11.1@sha256:b317b25d5e73d39c345f925dfbf6405762da16200a8264b93744332639117477
   pullPolicy: IfNotPresent
 
 securityContext:

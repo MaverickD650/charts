@@ -22,7 +22,6 @@ data:
   INVITATION_ORG_NAME: {{ .Values.vaultwarden.defaultInviteName | quote }}
   {{- end }}
   SHOW_PASSWORD_HINT: {{ .Values.vaultwarden.showPasswordHint | quote }}
-  WEBSOCKET_ENABLED: {{ .Values.vaultwarden.enableWebsockets | quote }}
   WEB_VAULT_ENABLED: {{ .Values.vaultwarden.enableWebVault | quote }}
   ORG_CREATION_USERS: {{ .Values.vaultwarden.orgCreationUsers | quote }}
   {{- if .Values.vaultwarden.attachmentLimitOrg }}
@@ -48,7 +47,7 @@ data:
   SMTP_FROM_NAME: {{ .Values.vaultwarden.smtp.fromName | quote }}
   {{- end }}
   {{- if .Values.vaultwarden.smtp.ssl }}
-  SMTP_SSL: {{ .Values.vaultwarden.smtp.ssl | quote }}
+  SMTP_SECURITY: {{ .Values.vaultwarden.smtp.security | quote }}
   {{- end }}
   {{- if .Values.vaultwarden.smtp.port }}
   SMTP_PORT: {{ .Values.vaultwarden.smtp.port | quote }}

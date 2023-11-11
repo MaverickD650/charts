@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/mediainfo
-  tag: v23.04.2@sha256:81c1f2e310e090dcbcf170c8f74db8eb9cdc476f79e697440e7a42605f01773e
+  tag: v23.11.1@sha256:921d96cabf438226743e445947c4e6a107c98c59df97c6cf1860379a384bcfdc
   pullPolicy: IfNotPresent
 service:
   main:

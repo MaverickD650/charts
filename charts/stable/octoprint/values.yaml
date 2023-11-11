@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/octoprint
-  tag: v1.9.0@sha256:59a0a6f712b80f76fd7722e05f6375de4148338e79bd1c0aba0d691fdcdb2991
+  tag: v1.9.3@sha256:392635c219181cb8d997b295e6704f71df5d629f9c21bd8a72d5ccbc6cbabc64
   pullPolicy: IfNotPresent
 service:
   main:

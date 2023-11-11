@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/calibre-web
   pullPolicy: IfNotPresent
-  tag: 0.6.20@sha256:9eed3423d18e4bac8e7bbf1ca94e1c858ec356137d7f8442c97b77c9892c7bd6
+  tag: v0.6.21@sha256:8bdb36ea1b64bde3c689e63a1009edfaa1052009d7b079e61c83bd6e27a52061
 
 securityContext:
   container:

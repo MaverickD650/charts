@@ -1,7 +1,7 @@
 image:
   repository: tccr.io/truecharts/bookstack
   pullPolicy: IfNotPresent
-  tag: 23.02.20230226@sha256:8c90a4e5983fca7e8675708e7bf6beae880ef88f8d1047c8784cf9b3d4a78a55
+  tag: v23.10.20231030@sha256:3c9dd24ee7b12ba79274df4e3f1dcaec6b5137b0e27d0147376031a24ab39656
 
 securityContext:
   container:

@@ -1,6 +1,6 @@
 image:
   repository: tccr.io/truecharts/dashdot
-  tag: v5.2.1@sha256:6d5fd05e4bad6d97bf5d0840d3cf4a9bbad81647b2cc7d5a77f36c81a4236470
+  tag: v5.2.3@sha256:9dd541c659d5f9bb363140ac1cd126f96732c0aced1deebe934d06e31e7d6d1c
   pullPolicy: IfNotPresent
 
 securityContext:
