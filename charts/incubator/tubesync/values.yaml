@@ -35,6 +35,8 @@ workload:
             TUBESYNC_DEBUG: "False"
             TUBESYNC_HOSTS: ""
             TUBESYNC_WORKERS: "2"
+            PUID: "568"
+            GUID: "568"
 persistence:
   config:
     enabled: true
