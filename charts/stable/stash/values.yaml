@@ -21,6 +21,8 @@ workload:
             STASH_GENERATED: /config/generated
             STASH_METADATA: /config/metadata
             STASH_CACHE: /config/cache
+            PUID: ${PUID:-568}
+            PGID: PGID=${PGID:-568}
 persistence:
   config:
     enabled: true
