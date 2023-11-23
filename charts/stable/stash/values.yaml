@@ -28,6 +28,9 @@ persistence:
   data:
     enabled: true
     mountPath: "/data"
+  pip:
+    enabled: true
+    mountPath: "/pip-install"
 portal:
   open:
     enabled: true
