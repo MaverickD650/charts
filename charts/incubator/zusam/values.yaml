@@ -3,10 +3,16 @@ image:
   tag: 0.5.4@sha256:5a1581e6cd5fed185a1e858ad0256914ec9245a1bcc8df22d9e475651160e642
   pullPolicy: IfNotPresent
 securityContext:
-  readOnlyRootFilesystem: false
-  runAsNonRoot: false
-  runAsUser: 0
-  runAsGroup: 0
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+    capabilities:
+      disableS6Caps: true
+      add:
+        - SETUID
+        - SETGID
 service:
   main:
     ports:
