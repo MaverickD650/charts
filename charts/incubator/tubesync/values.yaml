@@ -42,6 +42,9 @@ persistence:
   downloads:
     enabled: true
     mountPath: /downloads
+  aux:
+    enabled: true
+    mountPath: /run/app
 portal:
   open:
     enabled: true
