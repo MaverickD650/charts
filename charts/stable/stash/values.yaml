@@ -1,13 +1,10 @@
 image:
-  repository: stashapp/stash
-  tag: v0.23.1@sha256:96d4e778a9fb7199da28983413c9767617bafc69db781bf7d00cd2667344b76d
+  repository: ghcr.io/feederbox826/stash-s6
+  tag: alpine@sha256:6b7e1c35e839fa71391db6cb14991bfd7ced6d10dd310d963d77ba8a09143523
   pullPolicy: IfNotPresent
 securityContext:
   container:
-    runAsNonRoot: false
     readOnlyRootFilesystem: false
-    runAsUser: 0
-    runAsGroup: 0
 service:
   main:
     ports:
@@ -21,25 +18,13 @@ workload:
           env:
             STASH_PORT: "{{ .Values.service.main.ports.main.port }}"
             STASH_STASH: /data
-            STASH_GENERATED: /generated
-            STASH_METADATA: /metadata
-            STASH_CACHE: /cache
+            STASH_GENERATED: /config/generated
+            STASH_METADATA: /config/metadata
+            STASH_CACHE: /config/cache
 persistence:
   config:
     enabled: true
-    mountPath: "/root/.stash"
-  cache:
-    enabled: true
-    mountPath: "/cache"
-  generated:
-    enabled: true
-    mountPath: "/generated"
-  metadata:
-    enabled: true
-    mountPath: "/metadata"
-  blobs:
-    enabled: true
-    mountPath: "/blobs"
+    mountPath: "/config"
   data:
     enabled: true
     mountPath: "/data"
