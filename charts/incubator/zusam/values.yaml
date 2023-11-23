@@ -75,6 +75,9 @@ persistence:
   data:
     enabled: true
     mountPath: /zusam/data
+  nginx:
+    enabled: true
+    mountPath: /run/nginx
 portal:
   open:
     enabled: true
