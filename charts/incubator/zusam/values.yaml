@@ -54,6 +54,16 @@ workload:
             INIT_USER: email@domain.com
             INIT_GROUP: zusam
             INIT_PASSWORD: changeme
+          probes:
+            liveness:
+              type: http
+              path: /
+            readiness:
+              type: http
+              path: /
+            startup:
+              type: http
+              path: /
 persistence:
   data:
     enabled: true
