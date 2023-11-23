@@ -13,6 +13,7 @@ securityContext:
       add:
         - SETUID
         - SETGID
+        - CHOWN
 service:
   main:
     ports:
