@@ -71,13 +71,16 @@ workload:
             startup:
               type: http
               path: /
+          command:
+            - /bin/bash
+          args:
+            - mkdir 
+            - -p 
+            - /run/nginx
 persistence:
   data:
     enabled: true
     mountPath: /zusam/data
-  nginx:
-    enabled: true
-    mountPath: /run/nginx
 portal:
   open:
     enabled: true
