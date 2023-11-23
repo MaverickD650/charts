@@ -3,10 +3,17 @@ image:
   repository: ghcr.io/meeb/tubesync
   tag: v0.13.2@sha256:a25e592df7130c0603022cbc2caf6009b4aadb0e65d9cf4172e479d58f0394f1
 securityContext:
-  readOnlyRootFilesystem: false
-  runAsNonRoot: false
-  runAsGroup: 0
-  runAsUser: 0
+  container:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsGroup: 0
+    runAsUser: 0
+    capabilities:
+      disableS6Caps: true
+      add:
+        - SETUID
+        - SETGID
+        - CHOWN
 service:
   main:
     ports:
