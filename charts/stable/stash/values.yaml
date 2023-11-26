@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/maverickd650/stash-s6
-  tag: latest@sha256:5cbbfa4a60de7fbc25dbdd6aa034d08106444013e20327a2596dc8860028f946
+  tag: latest@sha256:1906b2fafd7dd6714a0c19e648a201ae81d19a165172870e3863aea864b10180
   pullPolicy: IfNotPresent
 securityContext:
   container:
