@@ -35,8 +35,6 @@ workload:
             TUBESYNC_DEBUG: "False"
             TUBESYNC_HOSTS: ""
             TUBESYNC_WORKERS: "2"
-            PUID: "568"
-            GUID: "568"
 persistence:
   config:
     enabled: true
@@ -44,6 +42,10 @@ persistence:
   downloads:
     enabled: true
     mountPath: /downloads
+  aux:
+    enabled: true
+    mountPath: "/run/app"
+    type: emptyDir
 portal:
   open:
     enabled: true
