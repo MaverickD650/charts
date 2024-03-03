@@ -59,6 +59,7 @@ data:
       keep_stdout: true
       {{- end }}
     totp:
+      disable: {{ .Values.totp.disable_totp | default false }}
       issuer: {{ .Values.totp.issuer | default .Values.domain }}
       period: {{ .Values.totp.period | default 30 }}
       skew: {{ .Values.totp.skew | default 1 }}

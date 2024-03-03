@@ -99,6 +99,12 @@ questions:
       additional_attrs: true
       type: dict
       attrs:
+        - variable: disable_totp
+          label: "Disable TOTP"
+          description: "Disable TOTP"
+          schema:
+            type: boolean
+            default: false
         - variable: issuer
           label: "Issuer"
           description: "The issuer name displayed in the Authenticator application of your choice"
