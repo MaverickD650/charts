@@ -1,7 +1,7 @@
 {{ include "tc.v1.common.loader.all" . }}
 
 {{/* Render configmap for kubernetes-dashboard */}}
-{{- $configmapDBlessConfig := include "kubernetes-dashboard.configmap.paths" . | fromYaml -}}
+{{- $configmapDBlessConfig := include "kubernetes-dashboard.configmap.dblessconfig" . | fromYaml -}}
 {{- if $configmapDBlessConfig -}}
   {{- $_ := set .Values.configmap "kubernetes-dashboard-dblessConfig" $configmapDBlessConfig -}}
 {{- end -}}
