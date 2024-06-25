@@ -2,4 +2,4 @@
 {{- define "kubernetes-dashboard.secrets" -}}
 
 data:
-  {{ (include "kubernetes-dashboard.app.csrf.secret.value" . ) -}}
+  CSRF_KEY: {{ (include "kubernetes-dashboard.app.csrf.secret.value" . ) -}}

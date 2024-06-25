@@ -3,12 +3,12 @@
 {{/* Render configmap for kubernetes-dashboard */}}
 {{- $configmapDBlessConfig := include "kubernetes-dashboard.configmap.paths" . | fromYaml -}}
 {{- if $configmapDBlessConfig -}}
-  {{- $_ := set .Values.configmap "authelia-dblessConfig" $DBlessConfigs -}}
+  {{- $_ := set .Values.configmap "kubernetes-dashboard-dblessConfig" $DBlessConfigs -}}
 {{- end -}}
 
 {{- $configmapSettings := include "kubernetes-dashboard.configmap.settings" . | fromYaml -}}
 {{- if $configmapSettingss -}}
-  {{- $_ := set .Values.configmap "authelia-settings" $configmapSettings -}}
+  {{- $_ := set .Values.configmap "kubernetes-dashboard-settings" $configmapSettings -}}
 {{- end -}}
 
 {{/* Render secrets for kubernetes-dashboard */}}

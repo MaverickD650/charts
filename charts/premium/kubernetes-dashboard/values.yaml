@@ -55,18 +55,26 @@ workload:
           imageSelector: image
           enabled: true
           primary: true
+          args:
+            - --settings-config-map-name={{ template "kubernetes-dashboard.configmap.settings" . }}
   auth:
     podSpec:
       containers:
         auth:
           imageSelector: authImage
           automountServiceAccountToken: true
+          envFrom:
+            secretRef:
+              name: kubernetes-dashboard.secrets          
   api:
     podSpec:
       containers:
         api:
           imageSelector: apiImage
           automountServiceAccountToken: true
+          envFrom:
+            secretRef:
+              name: kubernetes-dashboard.secrets
   metrics:
     podSpec:
       containers:
@@ -134,7 +142,7 @@ kong:
   ingressController:
     enabled: false
   dblessConfig:
-    configMap: kong-dbless-config
+    configMap: kubernetes-dashboard-dblessConfig
   proxy:
     type: ClusterIP
     http:
@@ -194,6 +202,16 @@ persistence:
 portal:
   open:
     enabled: true
+
+metrics:
+  main:
+    enabled: true
+    type: "servicemonitor"
+    endpoints:
+      - port: main
+        path: /metrics
+    prometheusRule:
+      enabled: false
 
 operator:
   register: true

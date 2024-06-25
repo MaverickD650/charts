@@ -1,5 +1,5 @@
 {{/* Define the configmap */}}
-{{- define "kubernetes-dashboard.configmap.dblessConfig" -}}
+{{- define "kubernetes-dashboard.configmap.dblessconfig" -}}
 enabled: true
 data:
   kong.yml: |
