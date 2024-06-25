@@ -1,5 +1,21 @@
-{{/* Make sure all variables are set properly */}}
-{{- include "tc.v1.common.loader.init" . }}
+{{ include "tc.v1.common.loader.all" . }}
+
+{{/* Render configmap for kubernetes-dashboard */}}
+{{- $configmapDBlessConfig := include "kubernetes-dashboard.configmap.paths" . | fromYaml -}}
+{{- if $configmapDBlessConfig -}}
+  {{- $_ := set .Values.configmap "authelia-dblessConfig" $DBlessConfigs -}}
+{{- end -}}
+
+{{- $configmapSettings := include "kubernetes-dashboard.configmap.settings" . | fromYaml -}}
+{{- if $configmapSettingss -}}
+  {{- $_ := set .Values.configmap "authelia-settings" $configmapSettings -}}
+{{- end -}}
+
+{{/* Render secrets for kubernetes-dashboard */}}
+{{- $secret := include "kubernetes-dashboard.secrets" . | fromYaml -}}
+{{- if $secret -}}
+  {{- $_ := set .Values.secret "kubernetes-dashboard-secrets" $secret -}}
+{{- end -}}
 
 {{/* Render the templates */}}
 {{ include "tc.v1.common.loader.apply" . }}

@@ -15,11 +15,11 @@ dependencies:
     alias: ""
     tags: []
     import-values: []
-  - name: kubernetes-dashboard
-    version: 5.10.0
-    repository: oci://ghcr.io/elfhosted/charts
-    condition: ""
-    alias: kubernetes-dashboard
+  - name: kong
+    version: 3.12.1
+    repository: https://charts.konghq.com
+    condition: kong.enabled
+    alias: ""
     tags: []
     import-values: []
 deprecated: false
@@ -41,4 +41,4 @@ sources:
   - https://github.com/truecharts/containers/tree/master/apps/alpine
   - https://kubernetes-dashboard.universe.tf
 type: application
-version: 0.0.2
+version: 0.0.3
