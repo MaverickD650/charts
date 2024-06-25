@@ -7,7 +7,7 @@
 {{- end -}}
 
 {{- $configmapSettings := include "kubernetes-dashboard.configmap.settings" . | fromYaml -}}
-{{- if $configmapSettingss -}}
+{{- if $configmapSettings -}}
   {{- $_ := set .Values.configmap "kubernetes-dashboard-settings" $configmapSettings -}}
 {{- end -}}
 
