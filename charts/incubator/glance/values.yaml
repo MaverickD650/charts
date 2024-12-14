@@ -17,6 +17,8 @@ workload:
           enabled: true
           type: init
           imageSelector: alpineImage
+          securityContext:
+            readOnlyRootFilesystem: false
           command:
             - /bin/sh
             - -c
