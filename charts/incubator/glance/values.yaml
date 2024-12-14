@@ -17,8 +17,6 @@ workload:
           enabled: true
           type: init
           imageSelector: alpineImage
-          securityContext:
-            readOnlyRootFilesystem: false
           command:
             - /bin/sh
             - -c
@@ -31,21 +29,13 @@ workload:
               fi
       containers:
         main:
-          securityContext:
-            readOnlyRootFilesystem: false
           probes:
             liveness:
-              path: "/"
+              path: "/api/healthz"
             readiness:
-              path: "/"
+              path: "/api/healthz"
             startup:
-              path: "/"
-          command:
-            - /bin/sh
-            - -c
-            - |
-              ln -sf app/config/glance.yml /app/glance.yml
-              exec /app/glance
+              path: "/api/healthz"
 persistence:
   config:
     enabled: true
