@@ -31,15 +31,15 @@ workload:
         main:
           probes:
             liveness:
-              path: "/health"
+              path: "/"
             readiness:
-              path: "/health"
+              path: "/"
             startup:
-              path: "/health"
+              path: "/"
 persistence:
   config:
     enabled: true
-    mountPath: "/app"
+    mountPath: /app
     targetSelector:
       main:
         main: {}
