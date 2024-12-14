@@ -42,7 +42,7 @@ workload:
             - /bin/sh
             - -c
             - |
-              ln -sf /config/glance.yml /app/glance.yml
+              ln -sf app/config/glance.yml /app/glance.yml
               exec /app/glance
 persistence:
   config:
