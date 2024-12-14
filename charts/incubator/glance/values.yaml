@@ -30,7 +30,7 @@ workload:
                 ln -sf /config/glance.yml /app/glance.yml
                 echo "Config file copied, you can now edit it at /app/config/glance.yml"
                 ls -l /app
-                cat /app/config/glance.yml
+                cat /app/glance.yml
               fi
       containers:
         main:
