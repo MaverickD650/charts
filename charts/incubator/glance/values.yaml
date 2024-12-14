@@ -23,12 +23,14 @@ workload:
             - /bin/sh
             - -c
             - |
-              mkdir -p /app
+              mkdir -p /app/config
               if [ ! -f /app/config/glance.yml ]; then
                 echo "Config file not found, copying dummy..."
                 cp /dummy-config/glance.yml /app/config/glance.yml
                 ln -sf /config/glance.yml /app/glance.yml
                 echo "Config file copied, you can now edit it at /app/config/glance.yml"
+                ls -l /app
+                cat /app/config/glance.yml
               fi
       containers:
         main:
