@@ -1,0 +1,129 @@
+image:
+  repository: glanceapp/glance
+  pullPolicy: IfNotPresent
+  tag: v0.6.3@sha256:e84f27a7342af3f0ebba34bc3e3a251733f805f30f3c881e8c6656349a698db2
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        targetPort: 9289
+        port: 9289
+workload:
+  main:
+    podSpec:
+      initContainers:
+        init-config:
+          enabled: true
+          type: init
+          imageSelector: alpineImage
+          command:
+            - /bin/sh
+            - -c
+            - |
+              mkdir -p /app
+              if [ ! -f /app/glance.yml ]; then
+                echo "Config file not found, copying dummy..."
+                cp /dummy-config/glance.yml /app/glance.yml
+                echo "Config file copied, you can now edit it at /app/glance.yml"
+              fi
+      containers:
+        main:
+          probes:
+            liveness:
+              path: "/health"
+            readiness:
+              path: "/health"
+            startup:
+              path: "/health"
+persistence:
+  config:
+    enabled: true
+    mountPath: "/app"
+    targetSelector:
+      main:
+        main: {}
+        init-config: {}
+  glance-config:
+    enabled: true
+    mountPath: /dummy-config/glance.yml
+    subPath: glance.yml
+    readOnly: true
+    type: "configmap"
+    objectName: config
+    targetSelector:
+      main:
+        init-config: {}
+configmap:
+  config:
+    enabled: true
+    data:
+      glance.yml: |
+        pages:
+          - name: Home
+            columns:
+              - size: small
+                widgets:
+                  - type: calendar
+
+                  - type: rss
+                    limit: 10
+                    collapse-after: 3
+                    cache: 3h
+                    feeds:
+                      - url: https://ciechanow.ski/atom.xml
+                      - url: https://www.joshwcomeau.com/rss.xml
+                        title: Josh Comeau
+                      - url: https://samwho.dev/rss.xml
+                      - url: https://awesomekling.github.io/feed.xml
+                      - url: https://ishadeed.com/feed.xml
+                        title: Ahmad Shadeed
+
+                  - type: twitch-channels
+                    channels:
+                      - theprimeagen
+                      - cohhcarnage
+                      - christitustech
+                      - blurbs
+                      - asmongold
+                      - jembawls
+
+              - size: full
+                widgets:
+                  - type: hacker-news
+
+                  - type: videos
+                    channels:
+                      - UCR-DXc1voovS8nhAvccRZhg # Jeff Geerling
+                      - UCv6J_jJa8GJqFwQNgNrMuww # ServeTheHome
+                      - UCOk-gHyjcWZNj3Br4oxwh0A # Techno Tim
+
+                  - type: reddit
+                    subreddit: selfhosted
+
+              - size: small
+                widgets:
+                  - type: weather
+                    location: London, United Kingdom
+
+                  - type: markets
+                    markets:
+                      - symbol: SPY
+                        name: S&P 500
+                      - symbol: BTC-USD
+                        name: Bitcoin
+                      - symbol: NVDA
+                        name: NVIDIA
+                      - symbol: AAPL
+                        name: Apple
+                      - symbol: MSFT
+                        name: Microsoft
+                      - symbol: GOOGL
+                        name: Google
+                      - symbol: AMD
+                        name: AMD
+                      - symbol: RDDT
+                        name: Reddit
+portal:
+  open:
+    enabled: true
