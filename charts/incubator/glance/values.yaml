@@ -22,10 +22,11 @@ workload:
             - -c
             - |
               mkdir -p /app
-              if [ ! -f /app/glance/glance.yml ]; then
+              if [ ! -f /app/config/glance.yml ]; then
                 echo "Config file not found, copying dummy..."
-                cp /dummy-config/glance.yml /app/glance/glance.yml
-                echo "Config file copied, you can now edit it at /app/glance/glance.yml"
+                cp /dummy-config/glance.yml /app/config/glance.yml
+                ln -sf /config/glance.yml /app/glance.yml
+                echo "Config file copied, you can now edit it at /app/config/glance.yml"
               fi
       containers:
         main:
@@ -39,7 +40,7 @@ workload:
 persistence:
   config:
     enabled: true
-    mountPath: /app/glance
+    mountPath: /app/config
     targetSelector:
       main:
         main: {}
