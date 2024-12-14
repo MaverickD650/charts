@@ -31,6 +31,8 @@ workload:
               fi
       containers:
         main:
+          securityContext:
+            readOnlyRootFilesystem: false
           probes:
             liveness:
               path: "/"
