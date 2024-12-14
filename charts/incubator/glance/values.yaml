@@ -27,10 +27,7 @@ workload:
               if [ ! -f /app/config/glance.yml ]; then
                 echo "Config file not found, copying dummy..."
                 cp /dummy-config/glance.yml /app/config/glance.yml
-                ln -sf /config/glance.yml /app/glance.yml
                 echo "Config file copied, you can now edit it at /app/config/glance.yml"
-                ls -l /app
-                cat /app/glance.yml
               fi
       containers:
         main:
@@ -41,6 +38,12 @@ workload:
               path: "/"
             startup:
               path: "/"
+          command:
+            - /bin/sh
+            - -c
+            - |
+              ln -sf /config/glance.yml /app/glance.yml
+              exec /app/glance
 persistence:
   config:
     enabled: true
