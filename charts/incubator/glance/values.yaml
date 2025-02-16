@@ -27,15 +27,6 @@ workload:
                 cp /dummy-config/glance.yml /app/config/glance.yml
                 echo "Config file copied, you can now edit it at /app/config/glance.yml"
               fi
-      containers:
-        main:
-          probes:
-            liveness:
-              path: "/api/healthz"
-            readiness:
-              path: "/api/healthz"
-            startup:
-              path: "/api/healthz"
 persistence:
   config:
     enabled: true
