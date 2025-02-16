@@ -7,7 +7,7 @@ service:
     ports:
       main:
         protocol: http
-        targetPort: 9289
+        targetPort: 8080
         port: 9289
 workload:
   main:
